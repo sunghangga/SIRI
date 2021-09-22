@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>netex</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>netex</name>
+	<description>Netex project for Spring Boot</description>
+	<properties>
+		<java.version>11</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Start dependencies SIRI -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-afterburner</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- End dependencies SIRI -->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- Start plugin SIRI -->
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-xjc-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<extensions>
+						<extension>org.apache.cxf.xjcplugins:cxf-xjc-dv:3.3.0</extension>
+					</extensions>
+				</configuration>
+				<executions>
+					<execution>
+						<id>generate-xsd-sources</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>xsdtojava</goal>
+						</goals>
+						<configuration>
+							<sourceRoot>${project.build.directory}/generated-sources</sourceRoot>
+							<xsdOptions>
+								<xsdOption>
+									<xsd>${basedir}/src/main/resources/siri/siri-1.0/xsd/siri.xsd</xsd>
+									<bindingFile>${basedir}/src/main/resources/siri/siri-1.0/xjb/jaxb-bindings.xml</bindingFile>
+									<extension>true</extension>
+								</xsdOption>
+								<xsdOption>
+									<xsd>${basedir}/src/main/resources/siri/siri-1.3/xsd/siri.xsd</xsd>
+									<bindingFile>${basedir}/src/main/resources/siri/siri-1.3/xjb/jaxb-bindings.xml</bindingFile>
+									<extension>true</extension>
+								</xsdOption>
+								<xsdOption>
+									<xsd>${basedir}/src/main/resources/siri/siri-1.4/xsd/siri.xsd</xsd>
+									<bindingFile>${basedir}/src/main/resources/siri/siri-1.4/xjb/jaxb-bindings.xml</bindingFile>
+									<extension>true</extension>
+								</xsdOption>
+								<xsdOption>
+									<xsd>${basedir}/src/main/resources/siri/siri-2.0/xsd/siri.xsd</xsd>
+									<bindingFile>${basedir}/src/main/resources/siri/siri-2.0/xjb/jaxb-bindings.xml</bindingFile>
+									<extension>true</extension>
+								</xsdOption>
+								<xsdOption>
+									<xsd>${basedir}/src/main/resources/siri/siri-2.1/xsd/siri.xsd</xsd>
+									<bindingFile>${basedir}/src/main/resources/siri/siri-2.1/xjb/jaxb-bindings.xml</bindingFile>
+									<extension>true</extension>
+								</xsdOption>
+							</xsdOptions>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- End plugin SIRI -->
+		</plugins>
+	</build>
+</project>
