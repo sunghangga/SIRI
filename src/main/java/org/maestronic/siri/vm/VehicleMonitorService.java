@@ -42,7 +42,7 @@ public class VehicleMonitorService {
         onwardStopPointRef.setValue("51660");
 
         NaturalLanguageStringStructure onwardCallStopPointNames = new NaturalLanguageStringStructure();
-        onwardCallStopPointNames.setValue("San Pablo Av & Schmidt Ln");
+        onwardCallStopPointNames.setValue("San Pablo Av & Schmidt Ln A");
 
         ZonedDateTime onwardCallAimedArrivalTime = ZonedDateTime.now(ZoneId.of("UTC"));
         ZonedDateTime onwardCallExpectedArrivalTime = ZonedDateTime.now(ZoneId.of("UTC"));
